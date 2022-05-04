@@ -10,10 +10,18 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    receiveboard.cpp \
+    receivewindow.cpp \
+    sendboard.cpp \
+    sendwindow.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    receiveboard.h \
+    receivewindow.h \
+    sendboard.h \
+    sendwindow.h
 
 FORMS += \
     mainwindow.ui
@@ -22,3 +30,9 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+# So wiringPi include files can be found during compile
+INCLUDEPATH    += /usr/local/include
+
+# To link the wiringPi library when making the executable
+LIBS += -L/usr/local/lib -lwiringPi
